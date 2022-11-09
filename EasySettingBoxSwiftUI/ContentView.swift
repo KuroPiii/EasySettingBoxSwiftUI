@@ -8,6 +8,16 @@
 import SwiftUI
 import Cocoa
 
+extension NSScreen {
+    class func externalScreens() -> [NSScreen] {
+        let description: NSDeviceDescriptionKey = NSDeviceDescriptionKey(rawValue: "NSScreenNumber")
+        return screens.filter {
+            guard let deviceID = $0.deviceDescription[description] as? NSNumber else { return false }
+            print(deviceID)
+            return CGDisplayIsBuiltin(deviceID.uint32Value) == 0
+        }
+    }
+}
 struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -18,17 +28,71 @@ struct GrowingButton: ButtonStyle {
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
 }
+func decToHexString(number:UInt8) -> String {
+//        let result = decToHexStringFormat()
+    var h1:String = "0x"
+    if (number <= 16) {
+        h1 += "0"
+        h1 += String( number,radix: 16).uppercased()
+    }
+    else{
+        h1 += String( number,radix: 16).uppercased()
+    }
+    
+    return h1
+}
+func screenNames() -> [String] {
+//  let externalScreens = NSScreen.externalScreens()
+  var names = [String]()
+  var object : io_object_t
+  var serialPortIterator = io_iterator_t()
+  let matching = IOServiceMatching("IODisplayConnect")
+
+    let kernResult = IOServiceGetMatchingServices(kIOMainPortDefault,
+                                                matching,
+                                                &serialPortIterator)
+  if KERN_SUCCESS == kernResult && serialPortIterator != 0 {
+    repeat {
+      object = IOIteratorNext(serialPortIterator)
+      let info = IODisplayCreateInfoDictionary(object, UInt32(kIODisplayOnlyPreferredName)).takeRetainedValue() as NSDictionary as! [String:AnyObject]
+      if let productName = info["DisplayProductName"] as? [String:String],
+         let firstKey = Array(productName.keys).first {
+            names.append(productName[firstKey]!)
+      }
+        if let displayEDID = info["IODisplayEDID"] as? Data {
+            var edid = [String]()
+            for data in displayEDID{
+
+                edid.append(decToHexString(number: data))
+            }
+//            let array = Array(displayEDID)
+            
+            print("\(edid)" as String) // Result for my mac is "APP"       }
+        }
+    } while object != 0
+  }
+    //print(externalScreens.description)
+    print(NSScreen.screens)
+  IOObjectRelease(serialPortIterator)
+    NotificationCenter.default.addObserver(forName: NSApplication.didChangeScreenParametersNotification,
+                                           object: NSApplication.shared,
+                                           queue: OperationQueue.main) {
+        notification -> Void in
+        print("screen parameters changed")
+    }
+  return names
+}
 
 struct ContentView: View {
     @State private var showDetails = false
     @State public var adjustGridStatus = false
-    
     var body: some View {
+        let names = screenNames()
         Spacer()
         VStack{
             HStack{
                 Spacer()
-                Text("ESB porting ")
+                Text("")
                     .font(.system(size: 48))
                     .padding()
                 Spacer()
@@ -42,13 +106,17 @@ struct ContentView: View {
                    ZStack{
                    Image("common_img_monitor_s_bg_sel")
                    Image("common_img_monitor_s_06")
-//                   Text("ClickNow")
+                   //Text("Adjust")
                    }
                }
                .buttonStyle(GrowingButton())
             }
             
-            Spacer()
+            HStack {
+                Spacer()
+                Label("\(names[1])", systemImage: "display")
+                Spacer()
+            }
             
             Button{
                 adjustGridStatus = true
@@ -75,3 +143,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
