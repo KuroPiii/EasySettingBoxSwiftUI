@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848A4FC2291CF91A00BE1E5C /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC1291CF91A00BE1E5C /* FloatingPanel.swift */; };
+		848A4FC4291CF9EF00BE1E5C /* ModifierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC3291CF9EF00BE1E5C /* ModifierExtension.swift */; };
+		848A4FC6291CFB0700BE1E5C /* VisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC5291CFB0700BE1E5C /* VisualEffect.swift */; };
 		8491E3E62914C95600455B79 /* EasySettingBoxSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491E3E52914C95600455B79 /* EasySettingBoxSwiftUIApp.swift */; };
 		8491E3E82914C95600455B79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491E3E72914C95600455B79 /* ContentView.swift */; };
 		8491E3EA2914C95800455B79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8491E3E92914C95800455B79 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		848A4FC1291CF91A00BE1E5C /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		848A4FC3291CF9EF00BE1E5C /* ModifierExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierExtension.swift; sourceTree = "<group>"; };
+		848A4FC5291CFB0700BE1E5C /* VisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffect.swift; sourceTree = "<group>"; };
 		8491E3E22914C95600455B79 /* EasySettingBoxSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasySettingBoxSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8491E3E52914C95600455B79 /* EasySettingBoxSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasySettingBoxSwiftUIApp.swift; sourceTree = "<group>"; };
 		8491E3E72914C95600455B79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +63,9 @@
 				8491E3E92914C95800455B79 /* Assets.xcassets */,
 				8491E3EE2914C95800455B79 /* EasySettingBoxSwiftUI.entitlements */,
 				8491E3EB2914C95800455B79 /* Preview Content */,
+				848A4FC1291CF91A00BE1E5C /* FloatingPanel.swift */,
+				848A4FC3291CF9EF00BE1E5C /* ModifierExtension.swift */,
+				848A4FC5291CFB0700BE1E5C /* VisualEffect.swift */,
 			);
 			path = EasySettingBoxSwiftUI;
 			sourceTree = "<group>";
@@ -141,6 +150,9 @@
 			files = (
 				8491E3E82914C95600455B79 /* ContentView.swift in Sources */,
 				8491E3E62914C95600455B79 /* EasySettingBoxSwiftUIApp.swift in Sources */,
+				848A4FC6291CFB0700BE1E5C /* VisualEffect.swift in Sources */,
+				848A4FC4291CF9EF00BE1E5C /* ModifierExtension.swift in Sources */,
+				848A4FC2291CF91A00BE1E5C /* FloatingPanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

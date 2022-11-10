@@ -8,6 +8,8 @@
 import SwiftUI
 import Cocoa
 
+
+
 extension NSScreen {
     class func externalScreens() -> [NSScreen] {
         let description: NSDeviceDescriptionKey = NSDeviceDescriptionKey(rawValue: "NSScreenNumber")
@@ -86,6 +88,7 @@ func screenNames() -> [String] {
 struct ContentView: View {
     @State private var showDetails = false
     @State public var adjustGridStatus = false
+    @State var showingPanel = false
     var body: some View {
         let names = screenNames()
         Spacer()
@@ -101,15 +104,40 @@ struct ContentView: View {
             
             HStack{
                 Button {
-                   
+                    showingPanel.toggle()
                } label: {
                    ZStack{
                    Image("common_img_monitor_s_bg_sel")
                    Image("common_img_monitor_s_06")
                    //Text("Adjust")
                    }
+                   
                }
                .buttonStyle(GrowingButton())
+               .floatingPanel(isPresented: $showingPanel, content: {
+//                   VisualEffectView(material: .fullScreenUI,blendingMode: .behindWindow, state:.active,emphasized: false)
+//                           ZStack {
+//                               Rectangle()
+//                                   .fill(.white)
+//                               Text("I'm a floating panel. Click anywhere to dismiss me.")
+//                                   .foregroundColor(.brown)
+//                           }
+                   GeometryReader { geometry in
+                               VStack {
+                                   Text("\(geometry.size.width) x \(geometry.size.height)")
+                               }.frame(width: geometry.size.width, height: geometry.size.height)
+                                   Path { path in
+                                       path.move(to: CGPoint(x: 0, y: 10))
+                                       path.addLine(to: CGPoint(x: geometry.size.width , y: 10))
+                       //                path.addLine(to: CGPoint(x: 300, y: 300))
+                       //                path.addLine(to: CGPoint(x: 200, y: 100))
+                                       path.closeSubpath()
+                                   }
+                                   .stroke(.red, lineWidth: 10)
+                           }
+                       })
+               
+               
             }
             
             HStack {
@@ -132,11 +160,26 @@ struct ContentView: View {
                 }
             }
             .buttonStyle(GrowingButton())
+            GeometryReader { geometry in
+                        VStack {
+                            Text("\(geometry.size.width) x \(geometry.size.height)")
+                        }.frame(width: geometry.size.width, height: geometry.size.height)
+                            Path { path in
+                                path.move(to: CGPoint(x: 0, y: 10))
+                                path.addLine(to: CGPoint(x: geometry.size.width , y: 10))
+                //                path.addLine(to: CGPoint(x: 300, y: 300))
+                //                path.addLine(to: CGPoint(x: 200, y: 100))
+                                path.closeSubpath()
+                            }
+                            .stroke(.red, lineWidth: 10)
+                    }
             
             Spacer()
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
