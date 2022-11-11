@@ -89,6 +89,8 @@ struct ContentView: View {
     @State private var showDetails = false
     @State public var adjustGridStatus = false
     @State var showingPanel = false
+
+//    let timer = Timer.publish(every: 2, on:.main, in: .common).autoconnect()
     var body: some View {
         let names = screenNames()
         Spacer()
@@ -105,7 +107,12 @@ struct ContentView: View {
             HStack{
                 Button {
                     showingPanel.toggle()
-               } label: {
+                    _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                        print("Timer fired!")
+                        showingPanel.toggle()
+                    }
+                    
+                } label: {
                    ZStack{
                    Image("common_img_monitor_s_bg_sel")
                    Image("common_img_monitor_s_06")
@@ -113,6 +120,9 @@ struct ContentView: View {
                    }
                    
                }
+//               .onReceive(timer, perform: { input in
+//                   showingPanel.toggle()
+//               })
                .buttonStyle(GrowingButton())
                .floatingPanel(isPresented: $showingPanel, content: {
 //                   VisualEffectView(material: .fullScreenUI,blendingMode: .behindWindow, state:.active,emphasized: false)
@@ -123,19 +133,25 @@ struct ContentView: View {
 //                                   .foregroundColor(.brown)
 //                           }
                    GeometryReader { geometry in
-                               VStack {
-                                   Text("\(geometry.size.width) x \(geometry.size.height)")
-                               }.frame(width: geometry.size.width, height: geometry.size.height)
+//                               VStack {
+//                                   Text("\(geometry.size.width) x \(geometry.size.height)")
+//                               }.frame(width: geometry.size.width, height: geometry.size.height)
+                       
                                    Path { path in
-                                       path.move(to: CGPoint(x: 0, y: 10))
-                                       path.addLine(to: CGPoint(x: geometry.size.width , y: 10))
+                                       path.move(to: CGPoint(x: 0, y: geometry.size.height/2))
+                                       path.addLine(to: CGPoint(x: geometry.size.width , y: geometry.size.height/2))
+                                       path.move(to: CGPoint(x: geometry.size.width/2, y: geometry.size.height/2))
+                                       path.addLine(to: CGPoint(x: geometry.size.width/2 , y: geometry.size.height))
                        //                path.addLine(to: CGPoint(x: 300, y: 300))
                        //                path.addLine(to: CGPoint(x: 200, y: 100))
                                        path.closeSubpath()
                                    }
                                    .stroke(.red, lineWidth: 10)
                            }
-                       })
+                       }
+               )
+               
+               
                
                
             }

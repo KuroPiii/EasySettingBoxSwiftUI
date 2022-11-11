@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
+let screenSize: CGSize = (NSScreen.main?.frame.size)!
 /// Add a  ``FloatingPanel`` to a view hierarchy
 fileprivate struct FloatingPanelModifier<PanelContent: View>: ViewModifier {
     /// Determines wheter the panel should be presented or not
     @Binding var isPresented: Bool
- 
+
     /// Determines the starting size of the panel
-    var contentRect: CGRect = CGRect(x: 0, y: 0, width: 600, height: 600)
+    var contentRect: CGRect = CGRect(x: 0, y: 0, width: 200, height: 200)
  
     /// Holds the panel content's view closure
     @ViewBuilder let view: () -> PanelContent
@@ -58,8 +59,9 @@ extension View {
      - Parameter contentRect: The initial content frame of the window
      - Parameter content: The displayed content
      **/
+
     func floatingPanel<Content: View>(isPresented: Binding<Bool>,
-                                      contentRect: CGRect = CGRect(x: 0, y: 0, width: 600, height: 600),
+                                      contentRect: CGRect = CGRect(x: 0, y: 0, width: screenSize.width , height: screenSize.height),
                                       @ViewBuilder content: @escaping () -> Content) -> some View {
         self.modifier(FloatingPanelModifier(isPresented: isPresented, contentRect: contentRect, view: content))
     }

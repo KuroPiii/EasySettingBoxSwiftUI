@@ -52,7 +52,7 @@ class FloatingPanel<Content: View>: NSPanel {
             /// Sets animations accordingly
             animationBehavior = .utilityWindow
         
-            /// Transparent
+            /// Transparent for the floating panel
             isOpaque = false
             //backgroundColor = NSColor(red:1,green: 0.5,blue: 0.5,alpha: 0.5)
             backgroundColor = NSColor.clear
@@ -84,6 +84,7 @@ class FloatingPanel<Content: View>: NSPanel {
     override var canBecomeMain: Bool {
         return true
     }
+    
     
 }
 
