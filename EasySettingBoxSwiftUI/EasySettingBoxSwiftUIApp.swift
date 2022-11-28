@@ -8,7 +8,7 @@
 import SwiftUI
 class TransparentWindowView: NSView {
   override func viewDidMoveToWindow() {
-    window?.backgroundColor = .clear
+      window?.backgroundColor = NSColor(red: 0.0, green: 0.6, blue: 0.6,alpha: 1.0)//.clear
     super.viewDidMoveToWindow()
   }
 }

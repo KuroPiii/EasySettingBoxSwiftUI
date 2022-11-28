@@ -10,6 +10,8 @@
 		848A4FC2291CF91A00BE1E5C /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC1291CF91A00BE1E5C /* FloatingPanel.swift */; };
 		848A4FC4291CF9EF00BE1E5C /* ModifierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC3291CF9EF00BE1E5C /* ModifierExtension.swift */; };
 		848A4FC6291CFB0700BE1E5C /* VisualEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC5291CFB0700BE1E5C /* VisualEffect.swift */; };
+		848A4FC82927798E00BE1E5C /* LeftClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A4FC72927798E00BE1E5C /* LeftClick.swift */; };
+		84908A3F292F43700013240E /* DetectActiveWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A3E292F43700013240E /* DetectActiveWindow.swift */; };
 		8491E3E62914C95600455B79 /* EasySettingBoxSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491E3E52914C95600455B79 /* EasySettingBoxSwiftUIApp.swift */; };
 		8491E3E82914C95600455B79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491E3E72914C95600455B79 /* ContentView.swift */; };
 		8491E3EA2914C95800455B79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8491E3E92914C95800455B79 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 		848A4FC1291CF91A00BE1E5C /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		848A4FC3291CF9EF00BE1E5C /* ModifierExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierExtension.swift; sourceTree = "<group>"; };
 		848A4FC5291CFB0700BE1E5C /* VisualEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffect.swift; sourceTree = "<group>"; };
+		848A4FC72927798E00BE1E5C /* LeftClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftClick.swift; sourceTree = "<group>"; };
+		84908A3E292F43700013240E /* DetectActiveWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectActiveWindow.swift; sourceTree = "<group>"; };
 		8491E3E22914C95600455B79 /* EasySettingBoxSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasySettingBoxSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8491E3E52914C95600455B79 /* EasySettingBoxSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasySettingBoxSwiftUIApp.swift; sourceTree = "<group>"; };
 		8491E3E72914C95600455B79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				848A4FC1291CF91A00BE1E5C /* FloatingPanel.swift */,
 				848A4FC3291CF9EF00BE1E5C /* ModifierExtension.swift */,
 				848A4FC5291CFB0700BE1E5C /* VisualEffect.swift */,
+				848A4FC72927798E00BE1E5C /* LeftClick.swift */,
+				84908A3E292F43700013240E /* DetectActiveWindow.swift */,
 			);
 			path = EasySettingBoxSwiftUI;
 			sourceTree = "<group>";
@@ -149,6 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8491E3E82914C95600455B79 /* ContentView.swift in Sources */,
+				84908A3F292F43700013240E /* DetectActiveWindow.swift in Sources */,
+				848A4FC82927798E00BE1E5C /* LeftClick.swift in Sources */,
 				8491E3E62914C95600455B79 /* EasySettingBoxSwiftUIApp.swift in Sources */,
 				848A4FC6291CFB0700BE1E5C /* VisualEffect.swift in Sources */,
 				848A4FC4291CF9EF00BE1E5C /* ModifierExtension.swift in Sources */,
@@ -278,10 +286,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EasySettingBoxSwiftUI/EasySettingBoxSwiftUI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasySettingBoxSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -303,10 +313,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EasySettingBoxSwiftUI/EasySettingBoxSwiftUI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasySettingBoxSwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

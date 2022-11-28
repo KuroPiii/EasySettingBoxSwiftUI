@@ -22,16 +22,13 @@ fileprivate struct FloatingPanelModifier<PanelContent: View>: ViewModifier {
  
     /// Stores the panel instance with the same generic type as the view closure
     @State var panel: FloatingPanel<PanelContent>?
- 
+    @State private var yValue = 200.0
     func body(content: Content) -> some View {
         content
             .onAppear {
                 /// When the view appears, create, center and present the panel if ordered
                 panel = FloatingPanel(view: view, contentRect: contentRect, isPresented: $isPresented)
                 panel?.center()
-                if isPresented {
-                    present()
-                }
             }.onDisappear {
                 /// When the view disappears, close and kill the panel
                 panel?.close()
@@ -44,6 +41,7 @@ fileprivate struct FloatingPanelModifier<PanelContent: View>: ViewModifier {
                     panel?.close()
                 }
             }
+//        FloatingPanel<PanelContent>.MovingLineContentView()
     }
  
     /// Present the panel and make it the key window
@@ -64,5 +62,7 @@ extension View {
                                       contentRect: CGRect = CGRect(x: 0, y: 0, width: screenSize.width , height: screenSize.height),
                                       @ViewBuilder content: @escaping () -> Content) -> some View {
         self.modifier(FloatingPanelModifier(isPresented: isPresented, contentRect: contentRect, view: content))
+        
     }
 }
+

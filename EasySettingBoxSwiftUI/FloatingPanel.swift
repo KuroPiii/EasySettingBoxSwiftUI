@@ -55,9 +55,10 @@ class FloatingPanel<Content: View>: NSPanel {
             /// Transparent for the floating panel
             isOpaque = false
             //backgroundColor = NSColor(red:1,green: 0.5,blue: 0.5,alpha: 0.5)
-            backgroundColor = NSColor.clear
+        backgroundColor = NSColor.clear
             hasShadow = false
         
+            isMovable = false
             /// Set the content view.
             /// The safe area is ignored because the title bar still interferes with the geometry
             contentView = NSHostingView(rootView: view()
@@ -84,7 +85,6 @@ class FloatingPanel<Content: View>: NSPanel {
     override var canBecomeMain: Bool {
         return true
     }
-    
     
 }
 
